@@ -1,0 +1,56 @@
+{
+  "name": "todo-mvp",
+  "author": "Echo Global Logistics",
+  "version": "1.0.0",
+  "private": false,
+  "scripts": {
+    "start": "coffee web/app.coffee",
+    "test": "jasmine-node --coffee test/todoSpec.coffee"
+  },
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/EchoGlobalLogistics/mvp.git"
+  },
+  "homepage": "http://www.echo.com/",
+  "keywords": [
+    "nodejs mvp",
+    "model view presenter",
+    "dotnet mvp",
+    "Echo Global Logistics"
+  ],
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "Paul Monson",
+      "url": "https://github.com/pmonson711"
+    },
+    {
+      "name": "Justin Crafford",
+      "url": "https://github.com/jcrafford"
+    },
+    ,
+    {
+      "name": "Misha Koryak",
+      "url": "https://github.com/mkoryak"
+    },
+    ,
+    {
+      "name": "Brian Morgan",
+      "url": "https://github.com/bmorgan21"
+    }
+  ],
+  "dependencies": {
+    "coffee-script": "*",
+    "express": "3.x",
+    "less-middleware": "*",
+    "connect-flash": "*",
+    "connect-coffee-script": "*",
+    "underscore": "~1.4.4",
+    "nunjucks": "~0.1.9"
+  }
+}

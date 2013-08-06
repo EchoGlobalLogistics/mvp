@@ -1,0 +1,54 @@
+﻿@using Todo.Presenter.Models
+@model Todo.Presenter.TodoListViewModel
+
+@{
+    ViewBag.Title = "title";
+}
+
+@using (Html.BeginForm("Add", "Todo"))
+{
+
+    <header id="header">
+        <h1>todos</h1>
+        @Html.TextBox("description", "", new { placeholder = "What needs to be done?", autofocus = "" })
+    </header>
+}
+
+<!-- This section should be hidden by default and shown when there are todos -->
+    <section id="main">
+@using (Html.BeginForm("ToggelAllComplete", "Todo"))
+{
+            <button type="submit" class="toggle-all @(Model.AllItemsComplete ? "checked" : "" )"></button>
+}
+        <!-- These are here just to show the structure of the list items -->
+            <!-- List items should get the class `editing` when editing and `completed` when marked as completed -->
+
+            @Html.EditorFor(i => Model.TodoItems, "TodoItem")
+    </section>
+<!-- This footer should hidden by default and shown when there are todos -->
+<footer id="footer">
+    <!-- This should be `0 items left` by default -->
+    <span id="todo-count"><strong>@Model.ItemsCount</strong> @Model.ItemsLabel left</span>
+    <!-- Remove this if you don't implement routing -->
+    <ul id="filters">
+        <li>
+            <a class="@(Model.CurrentState == TodoListState.All ? "selected" : "")"href="@Url.Action("All")">All</a>
+        </li>
+        <li>
+            <a class="@(Model.CurrentState == TodoListState.Active ? "selected" : "")" href="@Url.Action("Active")">Active</a>
+        </li>
+        <li>
+            <a class="@(Model.CurrentState == TodoListState.Completed ? "selected" : "")" href="@Url.Action("Completed")">Completed</a>
+        </li>
+    </ul>
+    <!-- Hidden if no completed items are left â†“ -->
+    @if (@Model.HasCompletedItems)
+    {
+        using (Html.BeginForm("ClearCompleted", "Todo"))
+        {
+        <button id="clear-completed" data-provide="clear-provided">Clear completed (@Model.CompletedCount)</button>
+         }
+    }
+</footer>
+
+

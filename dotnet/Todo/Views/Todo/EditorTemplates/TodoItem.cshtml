@@ -1,0 +1,29 @@
+﻿@model IList<Todo.Presenter.Models.TodoItem>
+
+<ul id="todo-list">
+    @for (int i = 0; i < Model.Count(); i++)
+    {
+        <li class="@(Model[i].Completed ? "completed" : "")">
+            <div class="view">
+                @using (Html.BeginForm("ToggelComplete", "Todo"))
+                {
+                    <input type="hidden" name="Id" value="@Model[i].Id" />
+                    <input type="hidden" name="Description" value="@Model[i].Description" />
+                    <input type="hidden" name="Completed" value="@Model[i].Completed.ToString()" />
+
+                    <button class="toggle @(Model[i].Completed ? "checked" : "")" type="submit"></button>
+                }
+                <label>@Model[i].Description</label>
+                @using (Html.BeginForm("Remove", "Todo"))
+                {
+                    <input type="hidden" name="Id" value="@Model[i].Id" />
+                    <input type="hidden" name="Description" value="@Model[i].Description" />
+                    <input type="hidden" name="Completed" value="@Model[i].Completed.ToString()" />
+
+                    <button class="destroy" type="submit"></button>
+                }
+            </div>
+            @Html.TextBoxFor(m => Model[i].Description, new { @class = "edit" })
+        </li>
+    }
+</ul>

@@ -1,0 +1,32 @@
+{% macro todoItem(item) %}
+<form data-id='{{ item.id }}' autocomplete="off">
+    <li {% if item.completed %}class='completed'{% endif %} data-id="{{item.id}}">
+        <div class="view">
+            <input class="toggle" name='completed' value='true' type="checkbox" {% if item.completed %}checked='checked'{% endif %}>
+            <label class="todo-text">{{item.description}}</label>
+            <button class="destroy"></button>
+        </div>
+        <input type="hidden" value="{{ item.id }}" name='id'  />
+        <input type="text" value="{{ item.description }}" name='description' class="edit"/>
+    </li>
+</form>
+{% endmacro %}
+{% macro footer(obj) %}
+    <span id="todo-count"><strong>{{obj.activeTodoCount}}</strong> {{obj.itemLabel}} left</span>
+    {% if obj.completedTodos %}
+    <form action="/clearCompleted/" method="POST">
+        <button id="clear-completed" type="submit">Clear completed ({{obj.completedTodos}})</button>
+    </form>
+    {% endif %}
+    <ul id="filters">
+        <li>
+            <a class="{{ 'selected' if obj.state.all else '' }}" href="/">All</a>
+        </li>
+        <li>
+            <a class="{{ 'selected' if obj.state.active else '' }}" href="/active/">Active</a>
+        </li>
+        <li>
+            <a class="{{ 'selected' if obj.state.completed else '' }}" href="/completed/">Completed</a>
+        </li>
+    </ul>
+{% endmacro %}

@@ -1,0 +1,9 @@
+{% extends 'todo/base.html' %}
+{% import 'todo.html' as td %}
+
+
+{% block todoapp %}
+    {% for list in todoLists %}
+        {{ td.todoList(list) }}
+    {% endfor %}
+{% endblock %}

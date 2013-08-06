@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>Error: {{ error.status }} - {{ error.message }}</h1>
+{% if settings['verbose errors'] %}
+<pre>
+    {{ error.stack }}
+</pre>
+{% else %}
+<p>An error occurred!</p>
+{% endif %}
+{% endblock %}
