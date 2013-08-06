@@ -25,6 +25,7 @@ Who better to share why Echo is great than members of the IT team….
 
 The future at Echo is bright and opportunities for members of its IT team, much like its revenue, profits, share price, hiring, and retention, continue to be on the rise!  
 
-Interested in learning more?  Contact Megan McCann (mmccann@echo.com | 312.784.7666).  For a complete list of current openings, visit Echo’s Career Page.
+Interested in learning more?  Contact Megan McCann (mmccann@echo.com | 312.784.7666).  For a complete list of current openings, visit [Echo’s Career Page][career_link].
 
 
+[career_link]: http://www.echo.com/EchoRecruitment/Default.aspx
